@@ -64,4 +64,19 @@ function watchArchivos() {
   watch(paths.imagenes, versionWebp);
 }
 
+// funciones auxiliares
+function expandirCSS() {
+  return src(paths.scss)
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      outputStyle: 'expanded', // Puedes ajustar el estilo de salida (nested, expanded, compact, compressed)
+    }))
+    // .pipe(postcss([autoprefixer(), cssnano()]))
+    // .pipe(postcss([autoprefixer()]))
+    .pipe(sourcemaps.write('.'))
+    .pipe(dest('./build/css'));
+}
+
+exports.expandirCSS = expandirCSS
+
 exports.default = parallel(css, javascript, imagenes, versionWebp, watchArchivos); 
