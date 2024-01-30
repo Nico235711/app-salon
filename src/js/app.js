@@ -31,4 +31,6 @@ function iniciarApp() {
 
   // Muestra el resumen de la cita (o un mensaje de error en caso de no pasar la validacion)
   mostrarResumen()
+
+  almacenarNombreCita()
 }

@@ -48,9 +48,24 @@ function seleccionarServicio(e) {
     elemento = e.target
   }
 
+
+
   if (elemento.classList.contains("seleccionado")) {
     elemento.classList.remove("seleccionado")
+
+    const id = parseInt(elemento.dataset.idServicio)
+
+    eliminarServicio(id)
+    
   } else {
     elemento.classList.add("seleccionado")
+
+    const objServicio = {
+      id: parseInt(elemento.dataset.idServicio),
+      nombre: elemento.firstElementChild.textContent, // retorna el primer hijo
+      precio: elemento.firstElementChild.nextElementSibling.textContent // retorna el hermano del primer hijo
+    }
+
+    agregarServicio(objServicio)
   }
 }

@@ -11,5 +11,5 @@ function mostrarResumen() {
     resumen.append(sinCita)
   }
 
-  // TODO: continuar video 16
+  
 }

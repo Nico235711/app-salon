@@ -25,3 +25,18 @@
   }
 
 }
+
+.alerta {
+  padding: calc($separacion / 2);
+  text-align: center;
+  display: block;
+
+  &.error {
+    background-color: #a23;
+    color: $blanco;
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-weight: $bold;
+  }
+}
