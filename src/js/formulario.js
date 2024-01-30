@@ -17,6 +17,39 @@ function almacenarNombreCita() {
   })
 }
 
+function almacenarFechaCita() {
+  const fechaInput = document.getElementById("fecha")
+
+  fechaInput.addEventListener("input", e => {
+    // retorna un numero que representa el dia siendo domingo el 0 y sabado el 6
+    const dia = new Date(e.target.value).getUTCDay()
+
+    if ([0, 6].includes(dia)) {
+      fechaInput.value = ""
+      mostrarAlerta("No se aceptan citas los Fines de Semana", "error")
+    } else {
+      cita.fecha = fechaInput.value
+    }
+  })
+}
+
+function almacenarHoraCita() {
+  const horaInput = document.getElementById("hora")
+  horaInput.addEventListener("change", e => {
+    const horaCita = e.target.value
+    const hora = horaCita.split(":")
+
+    if (hora[0] < 10 || (hora[0] >= 22 && hora[1] > 0) ) {
+      setTimeout(() => {
+        horaInput.value = ""
+      }, 1000);
+      mostrarAlerta("Ya no se aceptan citan", "error")
+    } else {
+      cita.hora = horaCita
+    }
+  })
+}
+
 function mostrarAlerta(mensaje, tipo) {
 
   // si hay una alerta previa, entonces no crear otra
@@ -41,6 +74,21 @@ function mostrarAlerta(mensaje, tipo) {
   setTimeout(() => {
     alerta.remove()
   }, 3000);
+}
 
-  // TODO: continuar video #19
+function deshabilitarFechaAnterior() {
+  const fechaInput = document.getElementById("fecha")
+  const fechaActual = new Date()
+  const year = fechaActual.getFullYear()
+  let mes = fechaActual.getMonth() + 1 // +1 porque esto es un array asi que su indice comienza desde 0
+
+  if (mes < 10) {
+    mes = "0" + mes
+  }
+
+  const dia = fechaActual.getDate() + 1
+  // formato deseado: aaaa-mm-dd
+  const fechaDeshabilitada = `${year}-${mes}-${dia}`
+
+  fechaInput.min = fechaDeshabilitada
 }

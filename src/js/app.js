@@ -33,4 +33,10 @@ function iniciarApp() {
   mostrarResumen()
 
   almacenarNombreCita()
+
+  almacenarFechaCita()
+
+  deshabilitarFechaAnterior()
+
+  almacenarHoraCita()
 }

@@ -38,6 +38,8 @@ function mostrarBotonesPaginacion() {
   } else if (pagina === 3) {
     paginaSiguiente.classList.add("ocultar")
     paginaAnterior.classList.remove("ocultar")
+    mostrarResumen() // estoy en la pagina 3, carga el resumen de la cita
+
   } else {
     paginaAnterior.classList.remove("ocultar")
     paginaSiguiente.classList.remove("ocultar")
