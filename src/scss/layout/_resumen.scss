@@ -17,15 +17,28 @@
   }
 
   .resumen-servicios {
-    @include grid(2, calc($separacion / 2));
+    margin-top: calc($separacion / 2);
   }
 
   .contenedor-servicio {
-    background-color: $blanco;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #43453c;
   
     .nombre-servicio,
     .precio-servicio {
-      color: $negro;
+      color: $blanco;
+      font-weight: $bold;
+      font-size: 3rem;
+    }
+
+    .precio-servicio {
+      color: $azul;
+      font-size: 2rem;
     }
   }
+}
+
+.total {
+  text-align: right;
 }

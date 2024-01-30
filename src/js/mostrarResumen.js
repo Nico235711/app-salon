@@ -19,6 +19,13 @@ function mostrarResumen() {
   const serviciosCita = document.createElement("DIV")
   serviciosCita.classList.add("resumen-servicios")
 
+  const servicioHeading = document.createElement("H3")
+  servicioHeading.textContent = "Resumen de los servicios"
+
+  serviciosCita.append(servicioHeading)
+
+  let totalPagar = 0
+
   servicios.forEach(servicio => {
 
     const { nombre, precio } = servicio
@@ -33,6 +40,9 @@ function mostrarResumen() {
     precioServicio.classList.add("precio-servicio")
     precioServicio.textContent = precio
 
+    const totalServicio = precio.split("$")
+    totalPagar += parseInt(totalServicio[1]);
+
     contenedorServicio.append(nombreServicio, precioServicio)
     serviciosCita.appendChild(contenedorServicio)
   });
@@ -45,6 +55,10 @@ function mostrarResumen() {
   
   const horaCita = document.createElement("P")
   horaCita.innerHTML = `<span>Hora: </span>${hora}`
+  
+  const cantidadPagar = document.createElement("P")
+  cantidadPagar.classList.add("total")
+  cantidadPagar.innerHTML = `<span>Total a pagar: $</span>${totalPagar}`
 
-  resumen.append(nombreCita, fechaCita, horaCita, serviciosCita)
+  resumen.append(nombreCita, fechaCita, horaCita, serviciosCita, cantidadPagar)
 }
